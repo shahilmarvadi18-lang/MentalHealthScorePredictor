@@ -4,9 +4,12 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
 
-model = joblib.load('Mental_Health_Model.pkl')
-top_countries = ['Other','India','USA','Canada','Australia','UK','Germany','Mexico','Turkey','France']
+MODEL_PATH = Path(__file__).resolve().with_name("Mental_Health_Model.pkl")
+model = joblib.load(MODEL_PATH)
+# These must match the ten most common Country values used when training.
+top_countries = ['Other', 'India', 'USA', 'Canada', 'Australia', 'UK', 'Germany', 'Mexico', 'Turkey', 'France']
 
 app = FastAPI()
 
@@ -27,7 +30,7 @@ class StudentData(BaseModel):
     most_used_platform      : Literal['Facebook', 'LinkedIn', 'Instagram', 'Snapchat','Twitter','YouTube', 'TikTok', 'LINE', 'KakaoTalk', 'VKontakte', 'WhatsApp','WeChat']
     purpose_of_use          : Literal['Networking', 'Education', 'Entertainment', 'News']
     avg_daily_usage_hours   : float = Field(..., ge=0, le=24)
-    daily_unlocks           : int   = Field(..., ge=0)
+    daily_unlocks           : int   = Field(..., ge=0, le=500)
     study_hours             : float = Field(..., ge=0, le=24)
     physical_activity_hours : float = Field(..., ge=0, le=24)
     sleep_hours_per_night   : float = Field(..., ge=0, le=24)

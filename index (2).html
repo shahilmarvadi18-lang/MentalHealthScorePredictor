@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mental Health Score Predictor</title>
+  <meta name="description"
+    content="Estimate a mental health score from lifestyle and social media habits using a machine learning model." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style%20(1).css" />
+</head>
+
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Mental Health Score Predictor home"><span class="brand-dot"
+        aria-hidden="true"></span>MindMetric</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      Menu
+    </button>
+    <nav id="navLinks" class="nav-links" aria-label="Primary">
+      <a href="#predict">Predict</a><a href="#factors">Factors</a><a href="#how">How it works</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <span class="badge">Powered by Machine Learning</span>
+      <h1>Mental Health Score Predictor</h1>
+      <p class="subtitle">
+        Understand how lifestyle and social media habits may influence your
+        mental well-being.
+      </p>
+      <p class="lead">
+        This application uses a machine learning model trained on student
+        survey data to estimate a mental health score from lifestyle and
+        social-media-related factors such as screen time, sleep, study hours,
+        and stress.
+      </p>
+      <a class="btn btn-primary" href="#predict" id="ctaBtn">Check Your Mental Health Score</a>
+    </section>
+
+    <section class="section" id="predict">
+      <div class="card form-card">
+        <h2>Tell us about your routine</h2>
+        <p class="muted">
+          All fields are required. Your answers are sent only to the
+          prediction server you run.
+        </p>
+        <form id="predictForm" novalidate>
+          <fieldset>
+            <legend>About you</legend>
+            <div class="grid">
+              <div class="field">
+                <label for="age">Age <span class="unit">years</span></label>
+                <input type="number" id="age" name="age" min="10" max="100" step="1" placeholder="20"
+                  inputmode="numeric" />
+                <p class="err" id="err-age" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                  <option value="">Select gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+                <p class="err" id="err-gender" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                  <option value="">Select country</option>
+                  <option>India</option>
+                  <option>USA</option>
+                  <option>UK</option>
+                  <option>Canada</option>
+                  <option>Australia</option>
+                  <option>Germany</option>
+                  <option>France</option>
+                  <option>Mexico</option>
+                  <option>Turkey</option>
+                  <option>Spain</option>
+                  <option>Other</option>
+                </select>
+                <p class="err" id="err-country" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="academic_level">Academic Level</label>
+                <select id="academic_level" name="academic_level">
+                  <option value="">Select level</option>
+                  <option>High School</option>
+                  <option>Undergraduate</option>
+                  <option>Graduate</option>
+                </select>
+                <p class="err" id="err-academic_level" role="alert"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Social media</legend>
+            <div class="grid">
+              <div class="field">
+                <label for="avg_daily_usage_hours">Average Daily Usage <span class="unit">hours</span></label>
+                <input type="number" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1"
+                  placeholder="5.2" inputmode="decimal" />
+                <p class="err" id="err-avg_daily_usage_hours" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="daily_unlocks">Daily Phone Unlocks <span class="unit">per day</span></label>
+                <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" max="500" step="1" placeholder="80"
+                  inputmode="numeric" />
+                <p class="err" id="err-daily_unlocks" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="most_used_platform">Most Used Platform</label>
+                <select id="most_used_platform" name="most_used_platform">
+                  <option value="">Select platform</option>
+                  <option>Instagram</option>
+                  <option>TikTok</option>
+                  <option>YouTube</option>
+                  <option>Facebook</option>
+                  <option>Snapchat</option>
+                  <option>Twitter</option>
+                  <option>WhatsApp</option>
+                  <option>LinkedIn</option>
+                  <option>WeChat</option>
+                  <option>LINE</option>
+                  <option>KakaoTalk</option>
+                  <option>VKontakte</option>
+                </select>
+                <p class="err" id="err-most_used_platform" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="purpose_of_use">Main Purpose of Use</label>
+                <select id="purpose_of_use" name="purpose_of_use">
+                  <option value="">Select purpose</option>
+                  <option>Entertainment</option>
+                  <option>Education</option>
+                  <option>Networking</option>
+                  <option>News</option>
+                </select>
+                <p class="err" id="err-purpose_of_use" role="alert"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Daily lifestyle</legend>
+            <div class="grid">
+              <div class="field">
+                <label for="study_hours">Study Hours <span class="unit">hours/day</span></label>
+                <input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" placeholder="4.5"
+                  inputmode="decimal" />
+                <p class="err" id="err-study_hours" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="sleep_hours_per_night">Sleep <span class="unit">hours/night</span></label>
+                <input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.1"
+                  placeholder="7.0" inputmode="decimal" />
+                <p class="err" id="err-sleep_hours_per_night" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="physical_activity_hours">Physical Activity
+                  <span class="unit">hours/day</span></label>
+                <input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24"
+                  step="0.1" placeholder="1.5" inputmode="decimal" />
+                <p class="err" id="err-physical_activity_hours" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="stress_level">Stress Level</label>
+                <select id="stress_level" name="stress_level">
+                  <option value="">Select stress level</option>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                  <option>Very High</option>
+                </select>
+                <p class="err" id="err-stress_level" role="alert"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="banner-error" id="apiError" role="alert" hidden></div>
+          <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+            <span class="spinner" aria-hidden="true"></span><span class="btn-label">Predict Mental Health Score</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card result-card" id="result" aria-live="polite" hidden>
+        <h2>Your Predicted Mental Health Score</h2>
+        <div class="gauge" role="img" id="gauge" aria-label="Score gauge">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="g-track" cx="60" cy="60" r="52" />
+            <circle class="g-fill" id="gaugeFill" cx="60" cy="60" r="52" />
+          </svg>
+          <div class="g-text">
+            <span id="scoreValue">0.0</span><small>/ 10</small>
+          </div>
+        </div>
+        <p class="verdict" id="verdict"></p>
+        <p class="muted center" id="interpretation"></p>
+        <button type="button" class="btn btn-ghost" id="resetBtn">
+          New Prediction
+        </button>
+        <p class="disclaimer">
+          <strong>Disclaimer:</strong> This prediction is generated by a
+          machine learning model for educational purposes and should not be
+          considered a medical diagnosis or professional mental-health
+          assessment.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="factors">
+      <h2>What influences your score?</h2>
+      <div class="cards">
+        <article class="card mini">
+          <h3><span aria-hidden="true">📱</span> Social Media Usage</h3>
+          <p>
+            Daily usage hours and how often you unlock your phone are both
+            considered by the model.
+          </p>
+        </article>
+        <article class="card mini">
+          <h3><span aria-hidden="true">😴</span> Sleep</h3>
+          <p>
+            Sleep duration per night is a key lifestyle pattern the model uses
+            to estimate well-being.
+          </p>
+        </article>
+        <article class="card mini">
+          <h3><span aria-hidden="true">📚</span> Study Habits</h3>
+          <p>
+            Daily study hours are included as one of the lifestyle factors in
+            the prediction.
+          </p>
+        </article>
+        <article class="card mini">
+          <h3><span aria-hidden="true">🏃</span> Physical Activity</h3>
+          <p>
+            Time spent on physical activity is considered by the prediction
+            model.
+          </p>
+        </article>
+        <article class="card mini">
+          <h3><span aria-hidden="true">🧠</span> Stress</h3>
+          <p>Your self-reported stress level is one of the model inputs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li class="card mini">
+          <span class="step-n">01</span>
+          <h3>Enter Your Information</h3>
+          <p>Provide lifestyle and social-media information.</p>
+        </li>
+        <li class="card mini">
+          <span class="step-n">02</span>
+          <h3>Machine Learning Analysis</h3>
+          <p>
+            The backend processes the information using the trained ML model.
+          </p>
+        </li>
+        <li class="card mini">
+          <span class="step-n">03</span>
+          <h3>Get Your Prediction</h3>
+          <p>Receive an estimated mental health score instantly.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Mental Health Score Predictor · Built with FastAPI, scikit-learn and
+      vanilla JavaScript. For educational use only.
+    </p>
+  </footer>
+  <script src="script%20(1).js"></script>
+</body>
+
+</html>
