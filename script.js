@@ -1,6 +1,5 @@
 "use strict";
 
-// Backend base URL (FastAPI served by uvicorn). Endpoint: POST {API_BASE_URL}/predict
 const API_BASE_URL = "https://mentalhealthscorepredictor-19ht.onrender.com";
 const PREDICT_URL = `${API_BASE_URL}/predict`;
 

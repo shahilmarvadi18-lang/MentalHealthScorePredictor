@@ -19,9 +19,9 @@ A small full-stack project that estimates a student's mental health score from s
 
 | File | Purpose |
 | --- | --- |
-| `index (2).html` | Frontend page and prediction form |
-| `style (1).css` | Page styling and responsive layout |
-| `script (1).js` | Form validation, API request, and result display |
+| `index.html` | Frontend page and prediction form |
+| `style.css` | Page styling and responsive layout |
+| `script.js` | Form validation, API request, and result display |
 | `main.py` | FastAPI application and prediction endpoint |
 | `Mental_Health_Model.pkl` | Saved scikit-learn model pipeline |
 | `Student Social Media And Mental Health Impact.csv` | Student survey dataset |
@@ -45,7 +45,11 @@ In a second terminal, serve the frontend from this directory:
 python -m http.server 5500
 ```
 
-Open `http://127.0.0.1:5500/index%20(2).html` in your browser. Keep the API running while using the form. The frontend sends a `POST` request to `http://127.0.0.1:8000/predict`.
+Open `http://127.0.0.1:5500/` in your browser. Keep the API running while using the form. The frontend sends a `POST` request to the deployed API configured in `script.js`.
+
+## Deploy the frontend on Render
+
+Create a **Static Site** connected to this repository. Set the **Root Directory** to the repository root, leave **Build Command** empty, and set **Publish Directory** to `.`. Render serves `index.html` from the publish directory as the site root. Deploy the backend separately as a web service; if its URL changes, update `API_BASE_URL` in `script.js` to that service's base URL, without a trailing slash.
 
 ## Prediction API
 
