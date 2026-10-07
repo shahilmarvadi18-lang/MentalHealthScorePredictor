@@ -17,16 +17,16 @@ A small full-stack project that estimates a student's mental health score from s
 
 ## Files
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Frontend page and prediction form |
-| `style.css` | Page styling and responsive layout |
-| `script.js` | Form validation, API request, and result display |
-| `main.py` | FastAPI application and prediction endpoint |
-| `Mental_Health_Model.pkl` | Saved scikit-learn model pipeline |
-| `Student Social Media And Mental Health Impact.csv` | Student survey dataset |
-| `Untitled.ipynb` | Data exploration, model training, and evaluation notebook |
-| `requirements.txt` | Python dependencies |
+| File                                                | Purpose                                                   |
+| --------------------------------------------------- | --------------------------------------------------------- |
+| `index.html`                                        | Frontend page and prediction form                         |
+| `style.css`                                         | Page styling and responsive layout                        |
+| `script.js`                                         | Form validation, API request, and result display          |
+| `main.py`                                           | FastAPI application and prediction endpoint               |
+| `Mental_Health_Model.pkl`                           | Saved scikit-learn model pipeline                         |
+| `Student Social Media And Mental Health Impact.csv` | Student survey dataset                                    |
+| `Untitled.ipynb`                                    | Data exploration, model training, and evaluation notebook |
+| `requirements.txt`                                  | Python dependencies                                       |
 
 ## Run locally
 
@@ -57,12 +57,12 @@ Create a **Static Site** connected to this repository. Set the **Root Directory*
 
 ```json
 {
-  "age": 21,
+  "age": 18,
   "gender": "Male",
   "country": "India",
   "academic_level": "Undergraduate",
   "most_used_platform": "Instagram",
-  "purpose_of_use": "Education",
+  "purpose_of_use": "Entertainment",
   "avg_daily_usage_hours": 4.0,
   "daily_unlocks": 100,
   "study_hours": 5.0,
