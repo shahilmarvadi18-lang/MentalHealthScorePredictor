@@ -4,6 +4,8 @@ A small full-stack project that estimates a student's mental health score from s
 
 > **Educational project only.** Predictions are model estimates from survey data. They are not a diagnosis or a substitute for professional mental health care.
 
+project live link :https://mentalhealthscorepredictor-1-vhcs.onrender.com/
+
 ## Project preview
 
 ![Preview of the Mental Health Score Predictor interface](project-preview.svg)
